@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Blog</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+
+		<p:panel id="panel2" header="Register Panel"
+			style="width:45%;float:right;" visible="#{userController.chckbx1}">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Username :" />
+				<p:inputText value="#{userController.user.username}" />
+				<p:outputLabel value="Password : " />
+				<p:password value="#{userController.user.password}" />
+				<p:commandButton value="Register"
+					action="#{userController.registerUser}" />
+
+			</p:panelGrid>
+		</p:panel>
+
+
+		<p:panel id="panel1" header="Register Panel"
+			style="width:45%;float:right;" visible="#{userController.chckbx2}">
+			<p:panelGrid columns="3">
+				<p:outputLabel value="Username :" />
+				<p:inputText id="username" value="#{userController.user.username}" />
+				<p:message for="username"></p:message>
+				<p:outputLabel value="Password : " />
+				<p:password id="password" value="#{userController.user.password}" />
+				<p:message for="username"></p:message>
+				<p:outputLabel value="Email :" />
+				<p:inputText id="email" value="#{userController.user.email}" />
+				<p:message for="email"></p:message>
+				<p:outputLabel value ="Phone with Ext:" />
+				<p:inputMask id="phoneWithExt"
+					value="#{userController.user.telephone}" mask="(999) 999-9999" />
+				<p:message for="phoneWithExt"></p:message>
+				<p:commandButton value="Register"
+					action="#{userController.registerUser}" />
+			</p:panelGrid>
+		</p:panel>
+
+		<div>
+			<p:outputLabel value="For Login" />
+			<p:selectBooleanCheckbox value="#{userController.chckbx1}">
+				<p:ajax update="form"></p:ajax>
+			</p:selectBooleanCheckbox>
+
+			<p:outputLabel value="For Register" />
+			<p:selectBooleanCheckbox value="#{userController.chckbx2}">
+				<p:ajax update="form"></p:ajax>
+			</p:selectBooleanCheckbox>
+		</div>
+
+
+	</h:form>
+</h:body>
+</html>
