@@ -4,35 +4,51 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.blog.model.User;
-import com.blog.service.UserService;
 import com.blog.service.UserServiceImpl;
 
 @ManagedBean
 @SessionScoped
 public class UserController {
-	private User user;
-	
-	private boolean chckbx1  = true;
-	private boolean chckbx2 = false; 
-	
+	private User user = new User();
+	private User user2 = new User();
+
+	private boolean chckbx1 = true;
+	private boolean chckbx2 = false;
+
 	private UserServiceImpl userService;
-	
+
 	public UserController() {
-		
-		user = new User();
+
 		userService = new UserServiceImpl();
 	}
-	
-	public void registerUser(){
+
+	public void registerUser() {
 		userService.saveUser(user);
 	}
-	
+
+	public void loginController() {
+		System.out.println("username" + user2.getUsername());
+		System.out.println("password" + user2.getPassword());
+		
+		System.out.println(userService.controlUser(user2));
+		
+	}
+
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+
+	public User getUser2() {
+		return user2;
+	}
+
+	public void setUser2(User user2) {
+		this.user2 = user2;
 	}
 
 	public boolean isChckbx1() {
@@ -50,18 +66,4 @@ public class UserController {
 	public void setChckbx2(boolean chckbx2) {
 		this.chckbx2 = chckbx2;
 	}
-
-	public UserServiceImpl getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserServiceImpl userService) {
-		this.userService = userService;
-	}
-	
-	
-	
-	
-	
-	
 }
